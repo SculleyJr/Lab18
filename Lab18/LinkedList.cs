@@ -24,7 +24,7 @@ namespace Lab18
         {
             var newNode = new Node<T>()
             {
-                Value = value       
+                Value = value
             };
 
             newNode.Next = Head.Next;
@@ -60,20 +60,25 @@ namespace Lab18
                 Console.WriteLine("not valid");
                 return false;
             }
-                int y = 0;
-                Node<T> curr = Head;
-                while (curr.Next != null)
+
+            int y = 0;
+            Node<T> curr = Head;
+            while (curr.Next != null)
+            {
+
+                if (y == x - 1)
                 {
-                    y++;
-                    curr = curr.Next;
-                    if (y == x - 1)
-                    {
-                        curr.Next = curr.Next.Next;
-                        break;
-                    }
+                    curr.Next = curr.Next.Next;
+                    break;
                 }
+
+                y++;
+                curr = curr.Next;
+            }
+
             return true;
         }
+
         public void PrintAllNodes()
         {
             Console.Write("Head -> ");
@@ -84,6 +89,7 @@ namespace Lab18
                 Console.Write(curr.Value);
                 Console.Write(" -> ");
             }
+
             Console.Write("NULL");
             Console.WriteLine();
         }
@@ -96,12 +102,12 @@ namespace Lab18
                 Console.WriteLine("not valid");
                 return false;
             }
+
             Node<T> curr = Head;
             int y = 0;
             while (curr.Next != null)
             {
-                y++;
-                curr = curr.Next;
+
                 if (y == x)
                 {
                     var temp = new Node<T>()
@@ -113,20 +119,39 @@ namespace Lab18
                     curr.Next = temp;
                 }
 
+                y++;
+                curr = curr.Next;
+
             }
-        
+
             return true;
         }
 
-        
-        public void PrintReverse()
+
+        public void PrintInReverse(T value)
         {
-            Node<T> next = Head;
-            Node<T> afterNext;
-            Node<T> currHead = Head.Next;
 
-          
+            Node<T> curr = Current;
+            var nodeStack = new Stack<T>();
+            while (curr.Next != null)
+            {
+                curr = curr.Next;
+                nodeStack.Push(value);
+                if (nodeStack.Contains(value))
+                {
+                    break;
+                }
+                
+            }
+            
+            foreach (var node in nodeStack)
+            {
+                Console.Write(node);
+                Console.Write(" -> ");
+            }
+            
+        }
 
-        }  
+        
     }
 }

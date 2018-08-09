@@ -26,14 +26,19 @@ namespace Lab18
         static void Main(string[] args)
         {
             var genericLinkedList = new LinkedList<string>();
+            
 
             foreach (var student in Classmates)
             {
                 genericLinkedList.AddAtStart(student);
-              
+               
+                
+
+
             }
             genericLinkedList.PrintAllNodes();
-
+           
+            Console.WriteLine("");
             Console.WriteLine("which index to remove?");
             int x = int.Parse(Console.ReadLine());
 
@@ -44,6 +49,12 @@ namespace Lab18
             int z = y - 1;
             genericLinkedList.InsertAtIndex(z, "l");
             genericLinkedList.PrintAllNodes();
+            Console.WriteLine("Linked List prineted in reverse");
+            foreach (var student in Classmates)
+            {
+                genericLinkedList.PrintInReverse(student);
+
+            }
             Console.WriteLine("done");
         }
     }
